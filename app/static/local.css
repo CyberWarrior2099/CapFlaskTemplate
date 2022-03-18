@@ -1,3 +1,10 @@
 .bottom-image img{
     vertical-align:bottom;
     }
+
+    body {
+        background-color: gray;
+    }
+    h1{
+        color: blue;
+    }

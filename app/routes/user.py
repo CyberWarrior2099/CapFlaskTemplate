@@ -20,6 +20,7 @@ def myProfile():
 # This is the route for editing a profile
 # the methods part is required if you are using a form 
 @app.route('/myprofile/edit', methods=['GET','POST'])
+
 # This requires the user to be loggedin
 @login_required
 # This is the function that goes with the route
@@ -33,8 +34,11 @@ def profileEdit():
         # This updates the data on the user record that was collected from the form
         currUser.update(
             lname = form.lname.data,
-            fname = form.fname.data
-        )
+            fname = form.fname.data,
+            role = form.role.data,
+            favoriteColor= form.favoriteColor.data
+    )
+
         # This updates the profile image
         if form.image.data:
             if currUser.image:
@@ -49,5 +53,7 @@ def profileEdit():
     # then sends the user to the page with the edit profile form
     form.fname.data = current_user.fname
     form.lname.data = current_user.lname
+    form.role.data = current_user.role
+    form.favoriteColor.data = current_user.favoriteColor
 
     return render_template('profileform.html', form=form)
